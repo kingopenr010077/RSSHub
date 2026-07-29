@@ -21,7 +21,10 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - run: pnpm run worker-build
+      - name: Build Worker
+        run: pnpm run worker-build
+        env:
+          WORKER_ROUTES: "deepseek,openai,anthropic,claude,cohere,cognition,meta,huggingface,langchain,aibase,aijishu,aicaijing,ainvest,cursor,deeplearning,manus,augmentcode,36kr,huxiu,ithome,geekpark,solidot,leiphone,ifanr,cnbeta,hackernews,medium,github,theverge,techcrunch,reuters,bloomberg,wired,nytimes,bbc,apple,google,microsoft,amazon,bilibili,weibo,twitter,zhihu,youtube,caixin,caijing,12306"
 
       - name: Deploy to Cloudflare Workers
         run: npx wrangler@latest deploy
